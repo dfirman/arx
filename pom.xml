@@ -857,7 +857,6 @@
             </build>
             <properties>
                 <envClassifier>core</envClassifier>
-                <maven.test.skip>true</maven.test.skip>
             </properties>
         </profile>
     </profiles>
