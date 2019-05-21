@@ -643,6 +643,10 @@
                     <family>mac</family>
                     <arch>x86_64</arch>
                 </os>
+                <property>
+                    <name>core</name>
+                    <value>!true</value>
+                </property>
             </activation>
             <properties>
                 <envClassifier>osx-64</envClassifier>
@@ -669,6 +673,10 @@
                     <family>Windows</family>
                     <arch>x86_64</arch>
                 </os>
+                <property>
+                    <name>core</name>
+                    <value>!true</value>
+                </property>
             </activation>
             <properties>
                 <envClassifier>win-64</envClassifier>
@@ -694,6 +702,10 @@
                     <family>Windows</family>
                     <arch>x86</arch>
                 </os>
+                <property>
+                    <name>core</name>
+                    <value>!true</value>
+                </property>
             </activation>
             <properties>
                 <envClassifier>win</envClassifier>
@@ -719,6 +731,10 @@
                     <name>Linux</name>
                     <arch>x86</arch>
                 </os>
+                <property>
+                    <name>core</name>
+                    <value>!true</value>
+                </property>
             </activation>
             <properties>
                 <envClassifier>gtk</envClassifier>
@@ -744,6 +760,10 @@
                     <name>Linux</name>
                     <arch>x86_64</arch>
                 </os>
+                <property>
+                    <name>core</name>
+                    <value>!true</value>
+                </property>
             </activation>
             <properties>
                 <envClassifier>gtk-64</envClassifier>
@@ -837,6 +857,7 @@
             </build>
             <properties>
                 <envClassifier>core</envClassifier>
+                <maven.test.skip>true</maven.test.skip>
             </properties>
         </profile>
     </profiles>
