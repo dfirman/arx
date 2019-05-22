@@ -59,7 +59,7 @@ public class TestAnonymizationLocalRecoding extends AbstractAnonymizationTest {
      */
     @Parameters(name = "{index}:[{0}]")
     public static Collection<Object[]> cases() throws IOException {
-        return Arrays.asList(new Object[][] {
+        return filterTests(Arrays.asList(new Object[][] {
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createLossMetric(0.05d)).addPrivacyModel(new EntropyLDiversity("occupation", 5)), "./data/adult.csv", "occupation", -998962150) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createLossMetric(0.05d)).addPrivacyModel(new DistinctLDiversity("Highest level of school completed", 5)), "./data/atus.csv", "Highest level of school completed", 1662433089) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createLossMetric(0.05d)).addPrivacyModel(new RecursiveCLDiversity("Highest level of school completed", 4d, 3)), "./data/atus.csv", "Highest level of school completed", 1141779920) },
@@ -72,7 +72,7 @@ public class TestAnonymizationLocalRecoding extends AbstractAnonymizationTest {
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createLossMetric(0.05d)).addPrivacyModel(new EDDifferentialPrivacy(1.0d, 1E-6d, DataGeneralizationScheme.create(GeneralizationDegree.MEDIUM_HIGH), true)), "./data/fars.csv", "", 482534106) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createLossMetric(0.05d)).addPrivacyModel(new DPresence(0.0, 0.2, DataSubset.create(Data.create("./data/fars.csv", StandardCharsets.UTF_8, ';'), Data.create("./data/fars_subset.csv", StandardCharsets.UTF_8, ';')))), "./data/fars.csv", "istatenum", 505248650) },
                                               
-        });
+        }));
     }
     
     /**

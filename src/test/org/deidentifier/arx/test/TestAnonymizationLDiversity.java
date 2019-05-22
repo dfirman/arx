@@ -45,7 +45,7 @@ public class TestAnonymizationLDiversity extends AbstractAnonymizationTest {
      */
     @Parameters(name = "{index}:[{0}]")
     public static Collection<Object[]> cases() {
-        return Arrays.asList(new Object[][] {
+        return filterTests(Arrays.asList(new Object[][] {
                                               /* 0 */{ new ARXAnonymizationTestCase(ARXConfiguration.create(0.04d, Metric.createPrecomputedEntropyMetric(0.1d, false)).addPrivacyModel(new EntropyLDiversity("occupation", 5)), "occupation", "./data/adult.csv", 228878.2039109517, new int[] { 1, 0, 1, 1, 2, 2, 2, 1 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.04d, Metric.createPrecomputedEntropyMetric(0.1d, false)).addPrivacyModel(new EntropyLDiversity("occupation", 100)), "occupation", "./data/adult.csv", 0.0d, null, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.0d, Metric.createPrecomputedEntropyMetric(0.1d, false)).addPrivacyModel(new EntropyLDiversity("occupation", 5)), "occupation", "./data/adult.csv", 324620.5269918692, new int[] { 1, 1, 1, 1, 3, 2, 2, 1 }, false) },
@@ -101,7 +101,7 @@ public class TestAnonymizationLDiversity extends AbstractAnonymizationTest {
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.04d, Metric.createPrecomputedEntropyMetric(0.1d, true)).addPrivacyModel(new EntropyLDiversity("EDUC", 5)), "EDUC", "./data/ihis.csv", 8730993.835884217, new int[] { 0, 0, 0, 2, 3, 0, 0, 1 }, true) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.04d, Metric.createPrecomputedEntropyMetric(0.1d, true)).addPrivacyModel(new EntropyLDiversity("EDUC", 100)), "EDUC", "./data/ihis.csv", 0.0d, null, true) },
                                               
-        });
+        }));
     }
     
     /**

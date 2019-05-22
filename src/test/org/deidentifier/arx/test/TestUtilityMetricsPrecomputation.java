@@ -53,7 +53,7 @@ public class TestUtilityMetricsPrecomputation extends AbstractTestUtilityMetrics
      */
     @Parameters(name = "{index}:[{0}]")
     public static Collection<Object[]> cases() throws IOException {
-        return Arrays.asList(new Object[][] {
+        return filterTests(Arrays.asList(new Object[][] {
                                               
                                               // entropy: criterion monotone metric monotone
                                               { new ARXUtilityMetricsTestCase(ARXConfiguration.create(0.0d).addPrivacyModel(new KAnonymity(5)), "occupation", "./data/adult.csv", Metric.createEntropyMetric(true), Metric.createPrecomputedEntropyMetric(threshold, true)) },
@@ -79,7 +79,7 @@ public class TestUtilityMetricsPrecomputation extends AbstractTestUtilityMetrics
                                               { new ARXUtilityMetricsTestCase(ARXConfiguration.create(0.5d).addPrivacyModel(new KAnonymity(5)), "occupation", "./data/adult.csv", Metric.createLossMetric(AggregateFunction.RANK), Metric.createPrecomputedLossMetric(threshold, AggregateFunction.RANK)) },
                                               { new ARXUtilityMetricsTestCase(ARXConfiguration.create(0.5d).addPrivacyModel(new DPresence(0.05, 0.15, DataSubset.create(Data.create("./data/adult.csv", StandardCharsets.UTF_8, ';'), Data.create("./data/adult_subset.csv", StandardCharsets.UTF_8, ';')))), "occupation", "./data/adult.csv", Metric.createLossMetric(AggregateFunction.RANK), Metric.createPrecomputedLossMetric(threshold, AggregateFunction.RANK)) },
                                               
-        });
+        }));
     }
     
     /**

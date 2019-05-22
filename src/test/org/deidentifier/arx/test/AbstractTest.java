@@ -88,7 +88,7 @@ public abstract class AbstractTest {
         }
         return metric;
     }
-    
+
     /**
      * Convert to array
      * @param iterator

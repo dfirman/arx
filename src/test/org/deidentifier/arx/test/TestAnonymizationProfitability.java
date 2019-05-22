@@ -51,7 +51,7 @@ public class TestAnonymizationProfitability extends AbstractAnonymizationTest {
      */
     @Parameters(name = "{index}:[{0}]")
     public static Collection<Object[]> cases() throws IOException {
-        return Arrays.asList(new Object[][] {
+        return filterTests(Arrays.asList(new Object[][] {
                                               /* 0 */{ new ARXAnonymizationTestCase(ARXConfiguration.create(0.04d, Metric.createPublisherPayoutMetric(false)).addPrivacyModel(new ProfitabilityJournalistNoAttack(DataSubset.create(Data.create("./data/adult.csv", StandardCharsets.UTF_8, ';'), Data.create("./data/adult_subset.csv", StandardCharsets.UTF_8, ';')))).setCostBenefitConfiguration(getConfig1()), "occupation", "./data/adult.csv", 2974380.2122727702, new int[] { 1, 3, 1, 1, 3, 2, 1, 1 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.04d, Metric.createLossMetric()).addPrivacyModel(new ProfitabilityJournalist(DataSubset.create(Data.create("./data/adult.csv", StandardCharsets.UTF_8, ';'), Data.create("./data/adult_subset.csv", StandardCharsets.UTF_8, ';')))).setCostBenefitConfiguration(getConfig2()), "occupation", "./data/adult.csv", 0.20171471140567654, new int[] { 0, 4, 0, 0, 2, 1, 0, 0 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.0d, Metric.createPrecomputedEntropyMetric(0.1d, false)).addPrivacyModel(new ProfitabilityProsecutor()).setCostBenefitConfiguration(getConfig1()), "occupation", "./data/adult.csv", 0.0, new int[] { 0, 0, 0, 0, 0, 0, 0, 0 }, false) },
@@ -106,7 +106,7 @@ public class TestAnonymizationProfitability extends AbstractAnonymizationTest {
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.04d, Metric.createDiscernabilityMetric(true)).addPrivacyModel(new ProfitabilityProsecutor()).setCostBenefitConfiguration(getConfig2()), "EDUC", "./data/ihis.csv", 3.1317776E7, new int[] { 0, 0, 0, 2, 0, 1, 0, 1 }, true) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createPublisherPayoutMetric(false)).addPrivacyModel(new ProfitabilityJournalistNoAttack(DataSubset.create(Data.create("./data/ihis.csv", StandardCharsets.UTF_8, ';'), Data.create("./data/ihis_subset.csv", StandardCharsets.UTF_8, ';')))).setCostBenefitConfiguration(getConfig3()), "EDUC", "./data/ihis.csv", 1.2692151622772004E7, new int[] { 5, 0, 0, 1, 4, 0, 0, 0 }, true) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.04d, Metric.createPublisherPayoutMetric(false)).addPrivacyModel(new ProfitabilityProsecutor()).setCostBenefitConfiguration(getConfig1()), "EDUC", "./data/ihis.csv", 1.203978E8, new int[] { 0, 0, 0, 0, 0, 0, 0, 0 }, true) },
-        });
+        }));
     }
     
     /**

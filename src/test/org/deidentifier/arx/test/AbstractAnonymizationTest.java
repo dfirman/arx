@@ -30,6 +30,7 @@ import java.lang.management.ManagementFactory;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +38,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.deidentifier.arx.ARXAnonymizer;
 import org.deidentifier.arx.ARXConfiguration;
@@ -295,6 +297,15 @@ public abstract class AbstractAnonymizationTest extends AbstractTest {
             return config.getPrivacyModels() + "-" + config.getSuppressionLimit() + "-" + config.getQualityModel() + "-" + dataset + "-PM:" +
                    config.isPracticalMonotonicity();
         }
+
+        /**
+         * Checks for test validity
+         * @return
+         */
+	public Boolean valid() {
+            File data = new File(dataset);
+            return data.exists();
+	}
     }
     
     private static final String timestamp = new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss").format(new Date());
@@ -317,6 +328,15 @@ public abstract class AbstractAnonymizationTest extends AbstractTest {
         builder.append(" Utility available: ").append(classification[6]).append("\n");
         builder.append("}");
         return builder.toString();
+    }
+
+    /**
+     * Filters tests with unavailable files from list  
+     * @param tests
+     * @return 
+     */
+    protected static Collection<Object[]> filterTests(Collection<Object[]> tests) {
+        return tests.stream().filter(test -> ((ARXAnonymizationTestCase)(test[0])).valid()).collect(Collectors.toList());
     }
     
     /**

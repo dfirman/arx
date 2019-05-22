@@ -24,10 +24,13 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
 
 import org.deidentifier.arx.ARXAnonymizer;
 import org.deidentifier.arx.ARXConfiguration;
@@ -119,8 +122,27 @@ public abstract class AbstractTestUtilityMetrics extends AbstractTest {
             return config.getPrivacyModels() + "-" + config.getSuppressionLimit() + "-" + config.getQualityModel() + "-" + dataset + "-PM:" +
                    config.isPracticalMonotonicity();
         }
+
+        /**
+         * Checks for test validity
+         * @return
+         */
+        public Boolean valid() {
+            File data = new File(dataset);
+            return data.exists();
+        }
     }
     
+    /**
+     * Filters tests with unavailable files from list  
+     * @param tests
+     * @return 
+     */
+    protected static Collection<Object[]> filterTests(Collection<Object[]> tests) {
+        return tests.stream().filter(test -> ((ARXUtilityMetricsTestCase)(test[0])).valid()).collect(Collectors.toList());
+    }
+
+
     /**
      * Returns the data object for the test case.
      *

@@ -77,7 +77,7 @@ public class TestAnonymizationHeuristic extends AbstractAnonymizationTest {
         }
         
         // Return
-        return cases;
+        return filterTests(cases);
     }
     
     /**

@@ -52,7 +52,7 @@ public class TestAnonymizationCombinations extends AbstractAnonymizationTest {
      */
     @Parameters(name = "{index}:[{0}]")
     public static Collection<Object[]> cases() throws IOException {
-        return Arrays.asList(new Object[][] {
+        return filterTests(Arrays.asList(new Object[][] {
                                               /* 0 */{ new ARXAnonymizationTestCase(ARXConfiguration.create(0.0d, Metric.createPrecomputedEntropyMetric(0.1d, true)).addPrivacyModel(new DPresence(0.05, 0.15, DataSubset.create(Data.create("./data/adult.csv", StandardCharsets.UTF_8, ';'), Data.create("./data/adult_subset.csv", StandardCharsets.UTF_8, ';')))), "occupation", "./data/adult.csv", 37223.2491248282, new int[] { 1, 4, 1, 1, 1, 2, 2, 1 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.0d, Metric.createPrecomputedEntropyMetric(0.1d, true)).addPrivacyModel(new KAnonymity(5)).addPrivacyModel(new DPresence(0.05, 0.15, DataSubset.create(Data.create("./data/adult.csv", StandardCharsets.UTF_8, ';'), Data.create("./data/adult_subset.csv", StandardCharsets.UTF_8, ';')))), "occupation", "./data/adult.csv", 35461.300017243804, new int[] { 0, 2, 1, 2, 3, 2, 2, 1 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.0d, Metric.createPrecomputedEntropyMetric(0.1d, true)).addPrivacyModel(new KAnonymity(5)).addPrivacyModel(new HierarchicalDistanceTCloseness("occupation", 0.2, Hierarchy.create("./data/adult_hierarchy_occupation.csv", StandardCharsets.UTF_8, ';'))).addPrivacyModel(new DPresence(0.05, 0.15, DataSubset.create(Data.create("./data/adult.csv", StandardCharsets.UTF_8, ';'), Data.create("./data/adult_subset.csv", StandardCharsets.UTF_8, ';')))), "occupation", "./data/adult.csv", 42481.619746031596, new int[] { 1, 4, 1, 1, 3, 2, 2, 1 }, false) },
@@ -184,7 +184,7 @@ public class TestAnonymizationCombinations extends AbstractAnonymizationTest {
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.05d, Metric.createPrecomputedEntropyMetric(0.1d, false)).addPrivacyModel(new HierarchicalDistanceTCloseness("EDUC", 0.2, Hierarchy.create("./data/ihis_hierarchy_EDUC.csv", StandardCharsets.UTF_8, ';'))).addPrivacyModel(new DPresence(0.05, 0.15, DataSubset.create(Data.create("./data/ihis.csv", StandardCharsets.UTF_8, ';'), Data.create("./data/ihis_subset.csv", StandardCharsets.UTF_8, ';')))), "EDUC", "./data/ihis.csv", 1481940.863625334, new int[] { 0, 0, 0, 3, 4, 2, 0, 1 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.05d, Metric.createPrecomputedEntropyMetric(0.1d, false)).addPrivacyModel(new HierarchicalDistanceTCloseness("EDUC", 0.2, Hierarchy.create("./data/ihis_hierarchy_EDUC.csv", StandardCharsets.UTF_8, ';'))), "EDUC", "./data/ihis.csv", 1.4719292081181683E7, new int[] { 0, 0, 0, 3, 4, 2, 0, 1 }, false) },
                                               
-        });
+        }));
     }
     
     /**

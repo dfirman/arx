@@ -52,7 +52,7 @@ public class TestUtilityMetricsLoss extends AbstractAnonymizationTest {
      */
     @Parameters(name = "{index}:[{0}]")
     public static Collection<Object[]> cases() throws IOException {
-        return Arrays.asList(new Object[][] {
+        return filterTests(Arrays.asList(new Object[][] {
                                               /* 0 */{ new ARXAnonymizationTestCase(ARXConfiguration.create(1.0d, Metric.createLossMetric(AggregateFunction.RANK)).addPrivacyModel(new KAnonymity(5)).addPrivacyModel(new HierarchicalDistanceTCloseness("occupation", 0.2, Hierarchy.create("./data/adult_hierarchy_occupation.csv", StandardCharsets.UTF_8, ';'))), "occupation", "./data/adult.csv", "[0.8630926331, 0.838230697, 0.8357221006, 0.8169882633, 0.7735229759, 0.7735229759, 0.7735229759, 0.7735229759]", new int[] { 0, 3, 0, 0, 2, 1, 1, 0 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1.0d, Metric.createLossMetric(AggregateFunction.RANK)).addPrivacyModel(new KAnonymity(5)), "occupation", "./data/adult.csv", "[0.297248193, 0.29678055, 0.1297659306, 0.1297659306, 0.1297659306, 0.1297659306, 0.1297659306, 0.1297659306]", new int[] { 0, 3, 0, 0, 1, 0, 0, 0 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1.0d, Metric.createLossMetric(AggregateFunction.RANK)).addPrivacyModel(new HierarchicalDistanceTCloseness("occupation", 0.2, Hierarchy.create("./data/adult_hierarchy_occupation.csv", StandardCharsets.UTF_8, ';'))), "occupation", "./data/adult.csv", "[0.8630926331, 0.838230697, 0.8357221006, 0.8169882633, 0.7735229759, 0.7735229759, 0.7735229759, 0.7735229759]", new int[] { 0, 3, 0, 0, 2, 1, 1, 0 }, false) },
@@ -154,7 +154,7 @@ public class TestUtilityMetricsLoss extends AbstractAnonymizationTest {
                                               { weight(new ARXAnonymizationTestCase(ARXConfiguration.create(0.05d, Metric.createLossMetric(1.0d, AggregateFunction.RANK)).addPrivacyModel(new HierarchicalDistanceTCloseness("occupation", 0.2, Hierarchy.create("./data/adult_hierarchy_occupation.csv", StandardCharsets.UTF_8, ';'))), "occupation", "./data/adult.csv", "[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]", new int[] { 1, 4, 0, 2, 3, 2, 2, 1 }, false)) },
                                               { weight(new ARXAnonymizationTestCase(ARXConfiguration.create(0.05d, Metric.createLossMetric(1.0d, AggregateFunction.RANK)).addPrivacyModel(new HierarchicalDistanceTCloseness("occupation", 0.2, Hierarchy.create("./data/adult_hierarchy_occupation.csv", StandardCharsets.UTF_8, ';'))), "occupation", "./data/adult.csv", "[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]", new int[] { 1, 4, 0, 2, 3, 2, 2, 1 }, false)) },
                                               
-        });
+        }));
     }
     
     /**

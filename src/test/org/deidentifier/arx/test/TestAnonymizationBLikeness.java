@@ -43,7 +43,7 @@ public class TestAnonymizationBLikeness extends AbstractAnonymizationTest {
      */
     @Parameters(name = "{index}:[{0}]")
     public static Collection<Object[]> cases() {
-        return Arrays.asList(new Object[][] {
+        return filterTests(Arrays.asList(new Object[][] {
                                               /* 0 */{ new ARXAnonymizationTestCase(ARXConfiguration.create(0.5d, Metric.createLossMetric()).addPrivacyModel(new BasicBLikeness("occupation", 3)), "occupation", "./data/adult.csv", 0.34883856157237925, new int[]{ 0, 3, 0, 0, 2, 0, 1, 0 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0d, Metric.createLossMetric()).addPrivacyModel(new EnhancedBLikeness("occupation", 2)), "occupation", "./data/adult.csv", 0.759176305345683, new int[]{ 1, 4, 1, 1, 3, 2, 2, 0 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createLossMetric()).addPrivacyModel(new BasicBLikeness("occupation", 1)), "occupation", "./data/adult.csv", 0.6081345989904172, new int[]{ 1, 4, 0, 1, 3, 0, 2, 0 }, false) },
@@ -54,7 +54,7 @@ public class TestAnonymizationBLikeness extends AbstractAnonymizationTest {
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createLossMetric()).addPrivacyModel(new EnhancedBLikeness("Highest level of school completed", 1)), "Highest level of school completed", "./data/atus.csv", 0.4597797188541255, new int[]{ 0, 5, 0, 0, 2, 0, 0, 1 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.05d, Metric.createLossMetric()).addPrivacyModel(new BasicBLikeness("Highest level of school completed", 2)), "Highest level of school completed", "./data/atus.csv", 0.636221748452025, new int[]{ 0, 5, 0, 1, 2, 2, 2, 2 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createLossMetric()).addPrivacyModel(new BasicBLikeness("Highest level of school completed", 1)), "Highest level of school completed", "./data/atus.csv", 0.4597797188541255, new int[]{ 0, 5, 0, 0, 2, 0, 0, 1 }, false) },
-        });
+        }));
     }
     
     /**

@@ -51,7 +51,7 @@ public class TestAnonymizationDifferentialPrivacy extends AbstractAnonymizationT
      */
     @Parameters(name = "{index}:[{0}]")
     public static Collection<Object[]> cases() {
-        return Arrays.asList(new Object[][] {
+        return filterTests(Arrays.asList(new Object[][] {
                                               /* Data-independent differential privacy */
                                               /* 0 */ { new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createLossMetric()).addPrivacyModel(new EDDifferentialPrivacy(2d, 1E-5d, DataGeneralizationScheme.create(GeneralizationDegree.LOW_MEDIUM), true)), "./data/adult.csv", 0.6820705793543056, new int[] { 0, 2, 0, 1, 1, 1, 1, 1, 0 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createLossMetric()).addPrivacyModel(new EDDifferentialPrivacy(1.5d, 1E-6d, DataGeneralizationScheme.create(GeneralizationDegree.HIGH), true)), "./data/adult.csv", 0.8112222411559193, new int[] { 1, 3, 1, 2, 2, 2, 2, 2, 1 }, false) },
@@ -121,7 +121,7 @@ public class TestAnonymizationDifferentialPrivacy extends AbstractAnonymizationT
                                               { new ARXAnonymizationTestCase(createDataDependentConfiguration(Metric.createClassificationMetric(), 2d, 1d, 1E-5d, 100), "", "./data/adult.csv", 153.91935483870967, new int[] { 0, 4, 1, 2, 2, 2, 2, 0, 0 }, false, null, new String[] {"occupation", "salary-class"}) },
                                               { new ARXAnonymizationTestCase(createDataDependentConfiguration(Metric.createClassificationMetric(), 2d, 1d, 1E-5d, 100), "", "./data/cup.csv", 274.28225806451616, new int[] { 5, 3, 0, 1, 1, 4, 4, 4 }, false, null, new String[] {"INCOME", "GENDER"}) },
                                               { new ARXAnonymizationTestCase(createDataDependentConfiguration(Metric.createClassificationMetric(), 2d, 1d, 1E-5d, 100), "", "./data/fars.csv", 806.7741935483871, new int[] { 5, 1, 1, 3, 0, 0, 3, 0 }, false, null, new String[] {"isex", "ihispanic"}) },
-        });
+        }));
     }
     
     /**

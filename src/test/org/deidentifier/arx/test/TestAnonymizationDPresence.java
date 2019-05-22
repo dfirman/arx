@@ -48,7 +48,7 @@ public class TestAnonymizationDPresence extends AbstractAnonymizationTest {
      */
     @Parameters(name = "{index}:[{0}]")
     public static Collection<Object[]> cases() throws IOException {
-        return Arrays.asList(new Object[][] {
+        return filterTests(Arrays.asList(new Object[][] {
                                               
                                               /* 0 */{ new ARXAnonymizationTestCase(ARXConfiguration.create(0.0d, Metric.createAECSMetric()).addPrivacyModel(new DPresence(0.0, 0.2, DataSubset.create(Data.create("./data/adult.csv", StandardCharsets.UTF_8, ';'), Data.create("./data/adult_subset.csv", StandardCharsets.UTF_8, ';')))), "occupation", "./data/adult.csv", 52.0, new int[] { 1, 4, 1, 1, 0, 2, 2, 0 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.0d, Metric.createPrecomputedEntropyMetric(0.1d, true)).addPrivacyModel(new DPresence(0.0, 0.2, DataSubset.create(Data.create("./data/adult.csv", StandardCharsets.UTF_8, ';'), Data.create("./data/adult_subset.csv", StandardCharsets.UTF_8, ';')))), "occupation", "./data/adult.csv", 30238.2081484441, new int[] { 0, 1, 1, 2, 3, 2, 2, 0 }, false) },
@@ -111,7 +111,7 @@ public class TestAnonymizationDPresence extends AbstractAnonymizationTest {
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.05d, Metric.createPrecomputedEntropyMetric(0.1d, true)).addPrivacyModel(new DPresence(0.05, 0.15, DataSubset.create(Data.create("./data/ihis.csv", StandardCharsets.UTF_8, ';'), Data.create("./data/ihis_subset.csv", StandardCharsets.UTF_8, ';')))), "EDUC", "./data/ihis.csv", 1073722.7704188202, new int[] { 0, 1, 1, 3, 0, 2, 1, 1 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.05d, Metric.createPrecomputedEntropyMetric(0.1d, false)).addPrivacyModel(new DPresence(0.05, 0.15, DataSubset.create(Data.create("./data/ihis.csv", StandardCharsets.UTF_8, ';'), Data.create("./data/ihis_subset.csv", StandardCharsets.UTF_8, ';')))), "EDUC", "./data/ihis.csv", 1091154.322219155, new int[] { 0, 1, 1, 3, 0, 2, 1, 1 }, false) },
                                               
-        });
+        }));
     }
     
     /**

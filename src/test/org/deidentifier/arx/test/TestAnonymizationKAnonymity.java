@@ -43,7 +43,7 @@ public class TestAnonymizationKAnonymity extends AbstractAnonymizationTest {
      */
     @Parameters(name = "{index}:[{0}]")
     public static Collection<Object[]> cases() {
-        return Arrays.asList(new Object[][] {
+        return filterTests(Arrays.asList(new Object[][] {
                                               /* 0 */{ new ARXAnonymizationTestCase(ARXConfiguration.create(0.04d, Metric.createPrecomputedEntropyMetric(0.1d, true)).addPrivacyModel(new KAnonymity(5)), "./data/adult.csv", 255559.85455731067, new int[] { 1, 0, 1, 1, 3, 2, 2, 0, 1 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.04d, Metric.createPrecomputedEntropyMetric(0.1d, true)).addPrivacyModel(new KAnonymity(100)), "./data/adult.csv", 379417.3460570988, new int[] { 1, 1, 1, 1, 3, 2, 2, 1, 1 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.0d, Metric.createPrecomputedEntropyMetric(0.1d, true)).addPrivacyModel(new KAnonymity(5)), "./data/adult.csv", 407289.5388925293, new int[] { 1, 2, 1, 1, 3, 2, 2, 1, 1 }, false) },
@@ -62,7 +62,7 @@ public class TestAnonymizationKAnonymity extends AbstractAnonymizationTest {
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.0d, Metric.createDiscernabilityMetric(true)).addPrivacyModel(new KAnonymity(100)), "./data/fars.csv", 4.36925397E8, new int[] { 5, 2, 3, 3, 1, 2, 0, 2 }, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.04d, Metric.createDiscernabilityMetric(true)).addPrivacyModel(new KAnonymity(5)), "./data/fars.csv", 4469271.0, new int[] { 0, 2, 2, 2, 1, 2, 1, 0 }, true) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(0.04d, Metric.createDiscernabilityMetric(true)).addPrivacyModel(new KAnonymity(100)), "./data/fars.csv", 5.6052481E7, new int[] { 0, 2, 3, 3, 1, 2, 2, 2 }, true) },
-        });
+        }));
     }
     
     /**

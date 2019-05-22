@@ -49,14 +49,14 @@ public class TestDomainShare extends AbstractAnonymizationTest {
      */
     @Parameters(name = "{index}:[{0}]")
     public static Collection<Object[]> cases() throws IOException {
-        return Arrays.asList(new Object[][] {
+        return filterTests(Arrays.asList(new Object[][] {
                                               /* 0 */{ new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createLossMetric()).addPrivacyModel(new KAnonymity(5)), "./data/adult.csv", getHierarchyBuilders(), 2.3208009999997614E-4 , new int[]{0}, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createLossMetric()).addPrivacyModel(new KAnonymity(100)), "./data/adult.csv", getHierarchyBuilders(), 0.02048935740000002 , new int[]{0}, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createLossMetric()).addPrivacyModel(new KAnonymity(5)), "./data/adult.csv", getHierarchyBuilders(), 2.3208009999997614E-4 , new int[]{0}, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createLossMetric()).addPrivacyModel(new KAnonymity(100)), "./data/adult.csv", getHierarchyBuilders(), 0.02048935740000002 , new int[]{0}, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createLossMetric()).addPrivacyModel(new KAnonymity(5)), "./data/adult.csv", getHierarchyBuilders(), 2.3208009999997614E-4 , new int[]{0}, false) },
                                               { new ARXAnonymizationTestCase(ARXConfiguration.create(1d, Metric.createLossMetric()).addPrivacyModel(new KAnonymity(100)), "./data/adult.csv", getHierarchyBuilders(), 0.02048935740000002 , new int[]{0}, false) },                                                                                                                  
-        });
+        }));
     }
     
     /**
